@@ -2,6 +2,7 @@ package com.hgn.blog.services;
 
 import com.hgn.blog.DTO.PostDTO;
 import com.hgn.blog.entities.Post;
+import com.hgn.blog.exceptions.PostNaoEncontradoException;
 import com.hgn.blog.repositories.PostRespository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -39,11 +40,22 @@ public class PostService {
         return (postDTO);
     }
 
+    public void apagaPorID(Long id) throws PostNaoEncontradoException {
+        verificaExistencia(id);
+        postRespository.deleteById(id);
+    }
+
     private Post toPost(PostDTO postDTO) {
         return modelMapper.map(postDTO, Post.class);
     }
 
     private PostDTO toPostDTO(Post post) {
         return modelMapper.map(post, PostDTO.class);
+    }
+
+    // Verifica se o post existe de excluir
+    private Post verificaExistencia(Long id) throws PostNaoEncontradoException {
+        return postRespository.findById(id)
+                .orElseThrow(() -> new PostNaoEncontradoException("O post informado não existe"));
     }
 }

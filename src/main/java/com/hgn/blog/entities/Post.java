@@ -1,5 +1,6 @@
 package com.hgn.blog.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,10 @@ public class Post {
     private String titulo;
     private String autor;
     private Date data;
+
+    @Column(length = 100000)
     private String conteudo;
+
     private Integer upvotes;
 
     public Post() {

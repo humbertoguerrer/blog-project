@@ -20,14 +20,14 @@ public class PostDTO {
 
     private Integer upvotes;
 
-
     public PostDTO() {
     }
 
-    public PostDTO(String titulo, String autor, Date data, Integer upvotes) {
+    public PostDTO(String titulo, String autor, Date data, String conteudo, Integer upvotes) {
         this.titulo = titulo;
         this.autor = autor;
         this.data = data;
+        this.conteudo = conteudo;
         this.upvotes = upvotes;
     }
 
@@ -53,6 +53,14 @@ public class PostDTO {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public String getConteudo() {
+        return conteudo;
+    }
+
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
     }
 
     public Integer getUpvotes() {

@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class PostNaoEncontradoException extends NoSuchElementException {
 
-    public PostNaoEncontradoException(String menssagem) {
-        super(menssagem);
+    public PostNaoEncontradoException(String mensagem) {
+        super(mensagem);
     }
 }
